@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  CoreBluetoothPlayground
+//  Peripheral-Ios
 //
-//  Created by Max Gribov on 11.02.2021.
+//  Created by Max Gribov on 14.02.2021.
 //
 
 import UIKit

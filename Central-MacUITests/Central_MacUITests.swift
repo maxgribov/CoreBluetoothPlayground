@@ -1,13 +1,13 @@
 //
-//  CoreBluetoothPlaygroundUITests.swift
-//  CoreBluetoothPlaygroundUITests
+//  Central_MacUITests.swift
+//  Central-MacUITests
 //
-//  Created by Max Gribov on 11.02.2021.
+//  Created by Max Gribov on 14.02.2021.
 //
 
 import XCTest
 
-class CoreBluetoothPlaygroundUITests: XCTestCase {
+class Central_MacUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
