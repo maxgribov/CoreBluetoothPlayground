@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7733E46925D944DC00E8DCE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7733E46825D944DC00E8DCE7 /* AppDelegate.swift */; };
-		7733E46B25D944DC00E8DCE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7733E46A25D944DC00E8DCE7 /* ViewController.swift */; };
+		7733E46B25D944DC00E8DCE7 /* CentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7733E46A25D944DC00E8DCE7 /* CentralViewController.swift */; };
 		7733E46D25D944DD00E8DCE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7733E46C25D944DD00E8DCE7 /* Assets.xcassets */; };
 		7733E47025D944DD00E8DCE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7733E46E25D944DD00E8DCE7 /* Main.storyboard */; };
 		7733E47C25D944DE00E8DCE7 /* Central_MacTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7733E47B25D944DE00E8DCE7 /* Central_MacTests.swift */; };
@@ -63,7 +63,7 @@
 		7733E41F25D92DD600E8DCE7 /* CentralManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralManager.swift; sourceTree = "<group>"; };
 		7733E46625D944DC00E8DCE7 /* Central-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Central-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7733E46825D944DC00E8DCE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7733E46A25D944DC00E8DCE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7733E46A25D944DC00E8DCE7 /* CentralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralViewController.swift; sourceTree = "<group>"; };
 		7733E46C25D944DD00E8DCE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7733E46F25D944DD00E8DCE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7733E47125D944DD00E8DCE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				7733E46825D944DC00E8DCE7 /* AppDelegate.swift */,
-				7733E46A25D944DC00E8DCE7 /* ViewController.swift */,
+				7733E46A25D944DC00E8DCE7 /* CentralViewController.swift */,
 				7733E46C25D944DD00E8DCE7 /* Assets.xcassets */,
 				7733E46E25D944DD00E8DCE7 /* Main.storyboard */,
 				7733E47125D944DD00E8DCE7 /* Info.plist */,
@@ -260,6 +260,8 @@
 			dependencies = (
 			);
 			name = "Central-Mac";
+			packageProductDependencies = (
+			);
 			productName = "Central-Mac";
 			productReference = 7733E46625D944DC00E8DCE7 /* Central-Mac.app */;
 			productType = "com.apple.product-type.application";
@@ -395,6 +397,8 @@
 				Base,
 			);
 			mainGroup = 7777C45625D59649005031FA;
+			packageReferences = (
+			);
 			productRefGroup = 7777C46025D59649005031FA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -466,7 +470,7 @@
 			files = (
 				7733E4EB25D9452400E8DCE7 /* TransferService.swift in Sources */,
 				7733E4DB25D9451A00E8DCE7 /* PeripheralManager.swift in Sources */,
-				7733E46B25D944DC00E8DCE7 /* ViewController.swift in Sources */,
+				7733E46B25D944DC00E8DCE7 /* CentralViewController.swift in Sources */,
 				7733E46925D944DC00E8DCE7 /* AppDelegate.swift in Sources */,
 				7733E4E325D9451F00E8DCE7 /* CentralManager.swift in Sources */,
 			);

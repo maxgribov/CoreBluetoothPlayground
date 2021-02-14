@@ -701,28 +701,55 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--Central View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Central_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="CentralViewController" customModule="Central_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1KH-57-aGr">
-                                <rect key="frame" x="223" y="127" width="35" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Hello" id="8Sw-tu-WQ5">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FQY-mO-hoF">
+                                <rect key="frame" x="215" y="113" width="51" height="44"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1KH-57-aGr">
+                                        <rect key="frame" x="8" y="28" width="35" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Hello" id="8Sw-tu-WQ5">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pm2-DL-ApV">
+                                        <rect key="frame" x="-7" y="-7" width="65" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Send" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bOe-vw-hdk">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="sendButtonDidPresed:" target="XfG-lQ-9wD" id="aIH-ve-WMX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="1KH-57-aGr" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="Fen-Sy-kyA"/>
-                            <constraint firstItem="1KH-57-aGr" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="FyD-Hq-caJ"/>
+                            <constraint firstItem="FQY-mO-hoF" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="m2J-Cq-Tfn"/>
+                            <constraint firstItem="FQY-mO-hoF" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="qEq-Rm-aaN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="sendButton" destination="pm2-DL-ApV" id="EME-L7-Vdk"/>
+                        <outlet property="status" destination="1KH-57-aGr" id="GvY-1T-hBS"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

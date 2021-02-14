@@ -64,7 +64,11 @@ extension PeripheralManager: CBPeripheralManagerDelegate {
         switch peripheral.state {
         case .poweredOn:
             os_log("CBPeripheralManager is powered on")
+            manager.removeAllServices()
             manager.add(service)
+            manager.stopAdvertising()
+            os_log("CBPeripheralManager started adversting")
+            manager.startAdvertising(TransferService.adversting)
             
         case .poweredOff:
             os_log("CBPeripheralManager is not powered on")
@@ -141,7 +145,7 @@ extension PeripheralManager: CBPeripheralManagerDelegate {
             
             os_log("Received write request of %d bytes: %s request: %s", requestValue.count, stringFromData, request.rawValue)
             
-
+            _ = sendResponse(for: request)
         }
     }
 

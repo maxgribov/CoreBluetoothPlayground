@@ -10,7 +10,9 @@ import os
 
 class CentralManager: NSObject {
     
-    private lazy var manager = CBCentralManager(delegate: self, queue: queue, options: options)
+    var delegate: CentralManagerDelegate?
+    
+    lazy var manager = CBCentralManager(delegate: self, queue: queue, options: options)
     
     private let queue = DispatchQueue.global(qos: .default)
     private let restoreIdentifier: String?
@@ -35,6 +37,19 @@ class CentralManager: NSObject {
         super.init()
         
         manager.delegate = self
+    }
+    
+    func send(request: TransferService.Request) {
+        
+        guard let transferCharacteristic = transferCharacteristic, let discoveredPeripheral = discoveredPeripheral else {
+            return
+        }
+        
+        guard let requestValue = TransferService.Request.hello.rawValue.data(using: .utf8) else {
+            return
+        }
+        
+        discoveredPeripheral.writeValue(requestValue, for: transferCharacteristic, type: .withoutResponse)
     }
     
     /*
@@ -89,8 +104,15 @@ extension CentralManager: CBCentralManagerDelegate {
         switch central.state {
         case .poweredOn:
             os_log("CBCentralManager is powered on")
+//            retrievePeripheral()
+            manager.scanForPeripherals(withServices: [TransferService.serviceUUID],
+                                               options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
 
-            
+            DispatchQueue.main.async {
+                
+                self.delegate?.didStartScanning()
+            }
+
         case .poweredOff:
             os_log("CBCentralManager is not powered on")
             break
@@ -144,7 +166,7 @@ extension CentralManager: CBCentralManagerDelegate {
         
         // Reject if the signal strength is too low to attempt data transfer.
         // Change the minimum RSSI value depending on your app’s use case.
-        guard RSSI.intValue >= -50
+        guard RSSI.intValue >= -70
             else {
                 os_log("Discovered perhiperal not in expected range, at %d", RSSI.intValue)
                 return
@@ -176,6 +198,12 @@ extension CentralManager: CBCentralManagerDelegate {
      *  We've connected to the peripheral, now we need to discover the services and characteristics to find the 'transfer' characteristic.
      */
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        
+        DispatchQueue.main.async {
+            
+            self.delegate?.didConnected()
+        }
+        
         os_log("Peripheral Connected")
         
         // Stop scanning
@@ -305,4 +333,10 @@ extension CentralManager: CBPeripheralDelegate {
             cleanup()
         }
     }
+}
+
+protocol CentralManagerDelegate {
+    
+    func didStartScanning() -> Void
+    func didConnected() -> Void
 }
