@@ -64,11 +64,11 @@ extension PeripheralManager: CBPeripheralManagerDelegate {
         switch peripheral.state {
         case .poweredOn:
             os_log("CBPeripheralManager is powered on")
+            os_log("CBPeripheralManager added service")
             manager.removeAllServices()
             manager.add(service)
-            manager.stopAdvertising()
             os_log("CBPeripheralManager started adversting")
-            manager.startAdvertising(TransferService.adversting)
+            manager.startAdvertising([CBAdvertisementDataServiceUUIDsKey: [TransferService.serviceUUID]])
             
         case .poweredOff:
             os_log("CBPeripheralManager is not powered on")
@@ -152,6 +152,14 @@ extension PeripheralManager: CBPeripheralManagerDelegate {
     func peripheralManager(_ peripheral: CBPeripheralManager, willRestoreState dict: [String : Any]) {
         
         os_log("Will restore state")
+        
+        guard let servicesData = dict[CBPeripheralManagerRestoredStateServicesKey] as? [CBMutableService],
+              let service = servicesData.first, let characteristic = service.characteristics?.first as? CBMutableCharacteristic, let central = characteristic.subscribedCentrals?.first else {
+            return
+        }
+        
+        os_log("Restored central connection")
+        connectedCentral = central
     }
 }
 

@@ -69,7 +69,7 @@ class CentralManager: NSObject {
         } else {
             // We were not connected to our counterpart, so start scanning
             manager.scanForPeripherals(withServices: [TransferService.serviceUUID],
-                                               options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
+                                               options: [CBCentralManagerScanOptionAllowDuplicatesKey: false])
         }
     }
     
@@ -104,9 +104,7 @@ extension CentralManager: CBCentralManagerDelegate {
         switch central.state {
         case .poweredOn:
             os_log("CBCentralManager is powered on")
-//            retrievePeripheral()
-            manager.scanForPeripherals(withServices: [TransferService.serviceUUID],
-                                               options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
+            retrievePeripheral()
 
             DispatchQueue.main.async {
                 
